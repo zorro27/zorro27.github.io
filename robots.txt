@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /assets/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/img/
+Disallow: /*?*
+Disallow: /search.html
+
+User-agent: Yandex
+Disallow: /assets/
+Disallow: /*?*
+Clean-param: utm_source&utm_medium&utm_campaign
+
+Sitemap: https://h2o.npoprocess.ru/sitemap.xml
