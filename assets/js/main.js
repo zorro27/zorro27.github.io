@@ -96,6 +96,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /* File attach buttons in lead forms */
+  document.querySelectorAll('.file-field input[type="file"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      var nameEl = input.closest('.file-field').querySelector('.file-field-name');
+      if (!nameEl) return;
+      nameEl.textContent = input.files && input.files.length ? 'Файл: ' + input.files[0].name : '';
+    });
+  });
+
   /* Forms: front-end only demo submit */
   document.querySelectorAll('form[data-lead-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
@@ -130,6 +139,18 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', function () {
       if (window.scrollY > 4) header.style.boxShadow = '0 4px 20px rgba(11,25,60,.06)';
       else header.style.boxShadow = 'none';
+    });
+  }
+
+  /* Back to top */
+  var backToTop = document.querySelector('.back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 500) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });
