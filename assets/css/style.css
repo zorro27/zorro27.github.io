@@ -653,6 +653,15 @@ p svg, .card-body p svg{width:16px;height:16px;vertical-align:-3px;margin-right:
 .grid-2.rev .col-media{order:2;}
 .badge{display:inline-block;padding:6px 14px;border-radius:100px;background:#EAF0FF;color:var(--blue);font-size:13px;font-weight:600;margin-bottom:16px;}
 
+/* Grid overflow safety net: 1fr tracks default to a min size equal to their
+   content's min-content width, which lets wide/unbreakable content (tags,
+   forms, nowrap labels) force a grid wider than the viewport on mobile.
+   min-width:0 on every direct grid child lets tracks actually shrink. */
+.hero-grid > *,.systems-grid > *,.services-split > *,.industries-grid > *,
+.advantages-grid > *,.cards-grid > *,.form-row > *,.footer-top > *,
+.clients-strip > *,.tech-item > *,.news-grid > *,.grid-2 > *,
+.stats-strip > *,.hub-groups > *{min-width:0;}
+
 /* ---------- Responsive ---------- */
 @media (max-width:1320px){
   .header-phone small{display:none;}
