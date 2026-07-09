@@ -109,6 +109,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* Water-droplet ripple effect on every button click */
+  document.querySelectorAll('.btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var rect = btn.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var span = document.createElement('span');
+      span.className = 'ripple';
+      span.style.width = span.style.height = size + 'px';
+      span.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      span.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      btn.appendChild(span);
+      setTimeout(function () { span.remove(); }, 700);
+    });
+  });
+
   /* Header shadow on scroll */
   var header = document.querySelector('.site-header');
   if (header) {
